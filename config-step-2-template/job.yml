@@ -7,9 +7,15 @@ spec:
   ttlSecondsAfterFinished: 0
   template:
     spec:
+      restartPolicy: Never
       containers:
       - name: pi
         image: perl
         command: ["perl",  "-Mbignum=bpi", "-wle", "print bpi(2000)"]
-      restartPolicy: Never
+      - name: hello
+        image: busybox
+        command:
+        - /bin/sh
+        - -c
+        - sleep 30; echo Hello from the Kubernetes cluster
   backoffLimit: 4
