@@ -2,7 +2,9 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: pi
+  name: pi-sleep
+  annotations:
+    kapp.k14s.io/disable-wait: ""
 spec:
   ttlSecondsAfterFinished: 0
   template:
